@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<yaf> 
+
+	<!-- Credits of the original file go to Group 1, class 1 of course LAIG school year 2013/2014, FEUP, University of Porto -->
+	
+    <globals background="0 0 0 1" ambient="0.2 0.2 0.2 1" /> 
+
+    <fog color="0.1 0.1 0.1 0.2" near="40.0" far="200.0" />
+
+    <skybox size="300 250 300" center="15 0 15" emissive="1.0 1.0 1.0 0.1" intensity="0.1" up="scenes/textures/space.jpg" down="scenes/textures/space.jpg" left="scenes/textures/space.jpg" right="scenes/textures/space.jpg" front="scenes/textures/space.jpg" back="scenes/textures/space.jpg"/>
+
+    <cameras initial="cam1" > 
+        <perspective id="cam1" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="15 15 15" 
+            target="0 0.0 0" /> 
+
+        <perspective id="cam2" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="30 15 30" 
+            target="15 0 15" /> 
+ 
+    </cameras> 
+
+    <!-- bloco de texturas. Este bloco tem de existir mas pode estar vazio, se nao forem usadas texturas --> 
+    <textures>        
+        <texture id="wallTex" filepath="scenes/textures/wall.jpg" />
+        <texture id="screenImageTex" filepath="" isVideo="true"/>
+        <texture id="projectorStandTex" filepath="scenes/textures/wood.jpg" />
+        <texture id="cameraTex" filepath="scenes/textures/camera.jpg" />
+        <texture id="cameraCircleTex" filepath="scenes/textures/cameraCircle.jpg" />
+        <texture id="sofaTex" filepath="scenes/textures/sofa.jpg" mipmaps="false"
+            mipmap0="scenes/textures/sofa512.jpg"
+            mipmap1="scenes/textures/sofa256.jpg"
+            mipmap2="scenes/textures/sofa128.jpg"
+        />
+        <texture id="sofaPillowTex" filepath="scenes/textures/sofaPillow.avif" />
+    </textures> 
+
+    <materials> 
+
+		<material id="wallApp" 
+            emissive="0.0 0.0 0.0 1" 
+			color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="floorApp" 
+            emissive="0.0 0.0 0.0 1" 
+			color="0.2 0.2 0.2 1.0" 
+            specular="1 1 1 1" 
+            shininess="30" />
+
+        <material id="screenStructureApp" 
+            emissive="0.0 0.0 0.0 1" 
+			color="0.0 0.0 0.0 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            twosided = "true"  />
+
+        <material id="screenImageApp" 
+            emissive="0.0 0.0 0.0 1" 
+			color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="screenImageTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="projectorStandApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="projectorStandTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="cameraApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="cameraTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="cameraCircleApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="cameraCircleTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="sofaApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="sofaTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="sofaPillowApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0.5 0.5 0.5 1.0" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="sofaPillowTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="speakerApp" 
+            emissive="0.0 0.0 0.0 1" 
+            color="0 0 0 1.0"  
+            specular="0 0 0 0" 
+            shininess="0" 
+            wireframe = "true" />
+
+        <material id="speakerSolidApp" 
+            emissive="0.01 0.01 0.01 0.2" 
+            color="0.0 0.0 0.0 0.2"  
+            specular="0 0 0 0" 
+            shininess="0" />
+			
+    </materials> 
+
+    <graph rootid="scene"> 
+		
+		<node id="scene"> 
+            <children>
+                <noderef id="leftWall" /> 
+				<noderef id="rightWall" /> 
+                <noderef id="frontWall" />
+                <noderef id="backWall" />
+                <noderef id="floor" /> 
+                <noderef id="bufferGeometryPolygon" />
+
+                <noderef id="screen" /> 
+                <noderef id="projectorStand" /> 
+                <noderef id="camera" /> 
+
+                <noderef id="sofas" /> 
+
+                <noderef id="speakers" />
+
+                <noderef id="teste" />  
+                
+                <pointlight id="whiteLight1" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    decay="2.0"
+                    castshadow="true"
+                    position="1.0 12.0 15.0"  
+                /> 
+
+                <pointlight id="whiteLight2" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    decay="2.0"
+                    castshadow="true"
+                    position="29.0 12.0 15.0"  
+                /> 
+
+                <pointlight id="whiteLight3" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    decay="2.0"
+                    castshadow="true"
+                    position="15.0 12.0 29.0"  
+                /> 
+
+                <pointlight id="greenLight1" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="1.0 12.0 7.5"   
+                /> 
+
+                <pointlight id="greenLight2" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="1.0 12.0 22.5"    
+                /> 
+
+                <pointlight id="greenLight3" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="29.0 12.0 7.5"   
+                /> 
+
+                <pointlight id="greenLight4" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="29.0 12.0 22.5"    
+                /> 
+
+                <pointlight id="greenLight5" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="7.5 12.0 29.0"  
+                /> 
+
+                <pointlight id="greenLight6" enabled="true" 
+                    color="0.0 1.0 0.0 1" 
+                    intensity="20.0"
+                    distance="100"
+                    castshadow="true"
+                    position="22.5 12.0 29.0"    
+                /> 
+
+            </children> 
+        </node>
+
+        <node id="leftWall">
+			<transforms>
+				<translate value3="0 0 30" />
+				<rotate value3="0.0 90 0.0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 12" />
+                </primitive>
+            </children> 
+        </node>
+		
+		<node id="rightWall">
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 12" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="frontWall">
+            <transforms>
+				<translate value3="0 0 30" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 12" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="backWall">
+            <transforms>
+                <translate value3="30 0 0" />
+                <rotate value3="0.0 -90 0.0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 12" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="floor" receiveshadows="true">
+			<transforms>
+				<translate value3="0 0 30" />
+				<rotate value3="-90 0.0 0.0" />
+            </transforms> 
+
+			<materialref id="floorApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 30" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="screen">
+			<transforms>
+                <translate value3="15 6.5 0.5" />
+            </transforms> 
+			
+            <children>
+                <noderef id="screenStructure"/>       
+                <noderef id="screenImage" />
+            </children> 
+        </node>
+
+        <node id="screenStructure" castshadows="true" receiveshadows="true">
+
+			<materialref id="screenStructureApp" />
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="20 10 1.01" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="screenImage">
+			<transforms>
+                <translate value3="-9 4 0.51" />
+                <rotate value3="180.0 0.0 0.0" />
+            </transforms> 
+
+			<materialref id="screenImageApp" />
+			
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="18 8" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="projectorStand" castshadows="true" receiveshadows="true">
+			<transforms>
+                <translate value3="15 0.0 15" />
+            </transforms> 
+
+            <materialref id="projectorStandApp" />
+			
+            <children>
+                <noderef id="projectorStandTop"/>       
+                <noderef id="projectorStandBottom" />
+            </children> 
+        </node>
+
+        <node id="projectorStandTop">
+            <transforms>
+                <translate value3="0 4.25 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="3 0.5 3" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="projectorStandBottom">
+            <transforms>
+                <translate value3="0 2.0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2 4 2" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="camera" castshadows="true" receiveshadows="true">
+			<transforms>
+                <translate value3="15 4.5 15" />
+            </transforms> 
+
+            <materialref id="cameraApp" />
+			
+            <children>
+                <noderef id="cameraPiece1"/>       
+                <noderef id="cameraPiece2" />
+                <noderef id="cameraCylinders" />
+            </children> 
+        </node>
+
+        <node id="cameraPiece1">
+            <transforms>
+                <translate value3="0 0.65 -1" />
+                <rotate value3="90.0 0.0 0.0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <cylinder base="0.55" top="0.25" height="1.4" slices="32" stacks="32" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="cameraPiece2">
+            <transforms>
+                <translate value3="0 0.65 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="1.1 1.1 1.7" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="cameraCylinders">
+            <transforms>
+                <translate value3="0 -0.15 0" />
+            </transforms> 
+			
+            <children>             
+                <noderef id="cameraPiece3"/>       
+                <noderef id="cameraPiece4" />
+            </children> 
+        </node>
+
+        <node id="cameraPiece3">
+            <transforms>
+                <translate value3="0 1.65 -0.6" />
+                <rotate value3="0.0 0.0 90.0" />
+            </transforms> 
+			
+            <children>             
+                <noderef id="cameraPieceCylinder1"/>       
+                <noderef id="cameraPieceCylinder2" />
+                <noderef id="cameraPieceCylinder3" />
+            </children> 
+        </node>
+
+        <node id="cameraPiece4">
+            <transforms>
+                <translate value3="0 1.75 0.5" />
+                <rotate value3="0.0 0.0 90.0" />
+                <scale value3="1.3 1 1.3"/>
+            </transforms> 
+			
+            <children>             
+                <noderef id="cameraPieceCylinder1"/>       
+                <noderef id="cameraPieceCylinder2" />
+                <noderef id="cameraPieceCylinder3" />
+            </children> 
+        </node>
+
+        <node id="cameraPieceCylinder1">
+            <transforms>
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <cylinder base="0.50" top="0.50" height="0.1" slices="32" stacks="32" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="cameraPieceCylinder2">
+            <transforms>
+                <translate value3="0 0.051 0" />
+            </transforms> 
+
+            <materialref id="cameraCircleApp" />
+			
+            <children>             
+                <primitive>
+                    <cylinder base="0.40" top="0.40" height="0.01" slices="32" stacks="32" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="cameraPieceCylinder3">
+            <transforms>
+                <translate value3="0 -0.051 0" />
+            </transforms> 
+
+            <materialref id="cameraCircleApp" />
+			
+            <children>             
+                <primitive>
+                    <cylinder base="0.40" top="0.40" height="0.01" slices="32" stacks="32" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="sofas" castshadows="true" receiveshadows="true">
+            <materialref id="sofaApp" />
+			
+            <children>
+                <noderef id="sofa1"/>       
+                <noderef id="sofa2"/> 
+                <noderef id="sofa3"/> 
+                <noderef id="sofa4"/> 
+                <noderef id="sofa5"/> 
+                <noderef id="sofa6"/> 
+            </children> 
+        </node>
+
+        <node id="sofa">
+            <children>             
+                <noderef id="sofaComponent1"/> 
+                <noderef id="sofaComponent2"/> 
+                <noderef id="sofaComponent3"/> 
+                <noderef id="sofaComponent4"/> 
+                <noderef id="sofaPillow1"/> 
+                <noderef id="sofaPillow2"/> 
+            </children> 
+        </node>
+
+        <node id="sofa1">
+			<transforms>
+				<translate value3="7.5 2.0 28.0" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofa2">
+			<transforms>
+				<translate value3="7.5 2.0 20.5" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofa3">
+			<transforms>
+				<translate value3="7.5 2.0 13" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofa4">
+			<transforms>
+				<translate value3="22.5 2.0 28.0" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofa5">
+			<transforms>
+				<translate value3="22.5 2.0 20.5" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofa6">
+			<transforms>
+				<translate value3="22.5 2.0 13" />
+            </transforms> 
+
+            <children>             
+                <noderef id="sofa" />
+            </children> 
+        </node>
+
+        <node id="sofaComponent1">
+            <transforms>
+                <translate value3="0 0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="7 4 0.75" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="sofaComponent2">
+            <transforms>
+                <translate value3="-3.5 -1 -1.4" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="0.75 3 4" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+		
+        <node id="sofaComponent3">
+            <transforms>
+                <translate value3="3.5 -1 -1.4" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="0.75 3 4" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="sofaComponent4">
+            <transforms>
+                <translate value3="0 -1 -1.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="7 1.25 3" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="sofaPillow1">
+            <transforms>
+                <translate value3="-1.55 0.5 -0.6" />
+            </transforms> 
+
+            <materialref id="sofaPillowApp" />
+			
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="2.5 2 0.5" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="sofaPillow2">
+            <transforms>
+                <translate value3="1.55 0.5 -0.6" />
+            </transforms> 
+
+            <materialref id="sofaPillowApp" />
+			
+            <children>             
+                <primitive>
+                   <box xyz1="0 0 0" xyz2="2.5 2 0.5" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="bufferGeometryPolygon">
+            <transforms>
+                <translate value3="15 7 29.9" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                   <polygon 
+                        radius="2.5" 
+                        stacks="10" 
+                        slices="6"
+                        color_c="0 1 0 1" 
+                        color_p="0 0 0 1" 
+                    />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="speakers" castshadows="true" receiveshadows="true">
+            <materialref id="speakerSolidApp" />
+			
+            <children>
+                <noderef id="speaker1"/>       
+                <noderef id="speaker2"/> 
+            </children> 
+        </node>
+
+        <node id="speaker">
+            <transforms>
+				<translate value3="15 4.5 0.25" />
+            </transforms> 
+
+            <children>
+                <noderef id="speakerComponent1" />     
+                <noderef id="speakerComponent2" />          
+            </children> 
+        </node>
+
+        <node id="speakerComponent1">
+
+            <children>       
+                <primitive>
+                   <box xyz1="0 0 0" xyz2="2 9 0.5" parts_x="10" parts_y="10" parts_z="10" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="speakerComponent2">
+            <transforms>
+				<translate value3="0 0 0.4" />
+            </transforms> 
+
+            <materialref id="speakerApp" />
+
+            <children>       
+                <primitive>
+                   <box xyz1="0 0 0" xyz2="2 9 0.3" parts_x="50" parts_y="50" parts_z="50" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="speaker1">
+			<transforms>
+				<translate value3="-12.5 0 0" />
+            </transforms> 
+
+            <children>             
+                <noderef id="speaker" />
+            </children> 
+        </node>
+
+        <node id="speaker2">
+			<transforms>
+				<translate value3="12.5 0 0" />
+            </transforms> 
+
+            <children>             
+                <noderef id="speaker" />
+            </children> 
+        </node>
+
+    </graph> 
+</yaf> 

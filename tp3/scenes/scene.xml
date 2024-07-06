@@ -1,0 +1,1320 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<yaf> 
+
+	<!-- Credits of the original file go to Group 1, class 1 of course LAIG school year 2013/2014, FEUP, University of Porto -->
+	
+    <globals background="0 0 0 1" ambient="0.2 0.2 0.2 1" /> 
+
+    <fog color="0.1 0.1 0.1 0.2" near="40.0" far="200.0" />
+
+    <skybox size="300 250 300" center="15 0 15" emissive="1.0 1.0 1.0 0.1" intensity="0.1" up="scenes/textures/space.jpg" down="scenes/textures/space.jpg" left="scenes/textures/space.jpg" right="scenes/textures/space.jpg" front="scenes/textures/space.jpg" back="scenes/textures/space.jpg"/>
+
+    <cameras initial="cam1" > 
+        <perspective id="cam1" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="15 15 15" 
+            target="0 0.0 0" /> 
+    </cameras> 
+
+    <!-- bloco de texturas. Este bloco tem de existir mas pode estar vazio, se nao forem usadas texturas --> 
+    <textures>        
+        <texture id="wallTex" filepath="scenes/textures/wall.avif" />
+    </textures> 
+
+    <materials> 
+
+        <material id="wallApp" 
+            emissive="0 0 0 1" 
+			color="0.01 0.01 0.01 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="wallApp2" 
+            emissive="0 0 0 1" 
+			color="0.8 0.8 0.8 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="wallApp3" 
+            emissive="0 0 0 1" 
+			color="0.1 0.1 1 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="floorApp" 
+            emissive="0 0 0 1" 
+			color="0.1 0.1 0.1 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="whiteApp" 
+            emissive="0 0 0 1" 
+			color="1 1 1 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            textureref="wallTex" 
+            texlength_s="1" 
+            texlength_t="1" 
+            twosided = "true" />
+
+        <material id="poleApp" 
+            emissive="0.2 0.2 0.2 1" 
+			color="0.2 0.2 0.2 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            twosided = "true" />
+
+        <material id="screenApp" 
+            emissive="0 0 0 1" 
+			color="0 0 0 1" 
+            specular="0 0 0 0" 
+            shininess="30" 
+            twosided = "true" />
+    </materials> 
+
+    <graph rootid="scene"> 
+		
+		<node id="scene"> 
+        
+            <children>
+
+                <noderef id="outdoor" /> 
+
+                <noderef id="vehiclePark" /> 
+
+                <noderef id="obstaclePark" /> 
+
+                <noderef id="wall" /> 
+
+                <spotlight id="whiteLight1" enabled="true" 
+                    color="0.7 0.7 0.7 1" 
+                    intensity="35.0"
+                    distance="200"
+                    castshadow="true"
+                    position="25 50 50"
+                    target="0 0 0"
+                    decay="0.5"
+                    angle="75"
+                    shadowfar="100"
+                    shadowmapsize="10000"
+                /> 
+
+                <spotlight id="whiteLight2" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="50.0"
+                    distance="5"
+                    castshadow="true"
+                    position="0.0 -3.5 2.0"
+                    target="0 -5 -2"
+                    angle="75"
+                    shadowfar="10"
+                    shadowmapsize="100"
+                /> 
+
+                <spotlight id="whiteLight3" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="50.0"
+                    distance="5"
+                    castshadow="true"
+                    position="-10.0 -3.5 1.5"  
+                    target="-10 -5 -2" 
+                    angle="75"
+                    shadowfar="10"
+                    shadowmapsize="100"
+                /> 
+
+                <spotlight id="whiteLight4" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="25.0"
+                    distance="5"
+                    castshadow="true"
+                    position="0 -7.5 0"  
+                    target="0 -10 0" 
+                    angle="80"
+                    shadowfar="10"
+                    shadowmapsize="100"
+                /> 
+
+                 <spotlight id="whiteLight5" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="20.0"
+                    distance="7.5"
+                    castshadow="true"
+                    position="0 -30 13"  
+                    target="0 -30 16" 
+                    angle="75"
+                    shadowfar="10"
+                    shadowmapsize="100"
+                /> 
+
+            </children> 
+        </node>
+
+        <node id="wall">
+			<transforms>
+				<translate value3="0 0 0" />
+            </transforms> 
+
+            <materialref id="wallApp" />
+			
+            <children>             
+                <noderef id="wallComponent1"/>   
+                <noderef id="wallComponent2"/> 
+                <noderef id="wallComponent3"/> 
+                <noderef id="wallComponent4"/>    
+                <noderef id="wallComponent5"/> 
+                <noderef id="wallComponent6"/> 
+                <noderef id="wallComponent7"/> 
+                <noderef id="wallComponent8"/>  
+                <noderef id="wallComponent9"/> 
+                <noderef id="wallComponent10"/>  
+                <noderef id="wallComponent11"/>
+                <noderef id="wallComponent12"/>
+                <noderef id="wallComponent13"/>
+                <noderef id="wallComponent14"/>
+                <noderef id="wallComponent15"/>
+                <noderef id="wallComponent16"/>
+                <noderef id="wallComponent17"/>
+                <noderef id="wallComponent18"/>
+                <noderef id="wallComponent19"/>
+                <noderef id="wallComponent20"/>
+                <noderef id="wallComponent21"/>
+                <noderef id="wallComponent22"/>
+                <noderef id="wallComponent23"/>
+                <noderef id="wallComponent24"/>
+                <noderef id="wallComponent25"/>
+                <noderef id="wallComponent26"/>
+                <noderef id="wallComponent27"/>
+                <noderef id="wallComponent28"/>
+                <noderef id="wallComponent29"/>
+                <noderef id="wallComponent30"/>
+                <noderef id="wallComponent31"/>
+                <noderef id="wallComponent32"/>
+                <noderef id="wallComponent33"/>
+                <noderef id="wallComponent34"/>
+                <noderef id="wallComponent35"/>
+                <noderef id="wallComponent36"/>
+                <noderef id="wallComponent37"/>
+                <noderef id="wallComponent38"/>
+                <noderef id="wallComponent39"/>
+                <noderef id="wallComponent40"/>
+                <noderef id="wallComponent41"/>
+                <noderef id="wallComponent42"/>
+                <noderef id="wallComponent43"/>
+                <noderef id="wallComponent44"/>
+                <noderef id="wallComponent45"/>
+                <noderef id="wallComponent46"/>
+                <noderef id="wallComponent47"/>
+                <noderef id="wallComponent48"/>
+                <noderef id="wallComponent49"/>
+                <noderef id="wallComponent50"/>
+                <noderef id="wallComponent51"/>
+                <noderef id="wallComponent52"/>
+            </children> 
+        </node>
+
+        <node id="wallComponent1">
+			<transforms>
+				<translate value3="-5 0.5 -17.5" />
+            </transforms> 
+
+            <materialref id="wallApp3" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent2">
+			<transforms>
+				<translate value3="-5 0.5 37.5" />
+            </transforms> 
+
+            <materialref id="wallApp3" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent3">
+			<transforms>
+				<translate value3="12.5 0.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp3" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent4">
+			<transforms>
+				<translate value3="-22.5 0.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp3" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent5">
+			<transforms>
+				<translate value3="-5 0 -20" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent6">
+			<transforms>
+				<translate value3="-5 0 40" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent7">
+			<transforms>
+				<translate value3="15 0 10" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 0.05 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent8">
+			<transforms>
+				<translate value3="-25 0 10" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 0.05 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent9">
+			<transforms>
+				<translate value3="12.5 1.25 -25" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent10">
+			<transforms>
+				<translate value3="-22.5 1.25 45" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent11">
+			<transforms>
+				<translate value3="12.5 1.25 45" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent12">
+			<transforms>
+				<translate value3="-22.5 1.25 -25" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent13">
+			<transforms>
+				<translate value3="20 1.25 -17.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent14">
+			<transforms>
+				<translate value3="20 1.25 37.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent15">
+			<transforms>
+				<translate value3="-30 1.25 -17.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent16">
+			<transforms>
+				<translate value3="-30 1.25 37.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent17">
+			<transforms>
+				<translate value3="-5 5 -32.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent18">
+			<transforms>
+				<translate value3="-5 5 52.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent19">
+			<transforms>
+				<translate value3="27.5 5 10" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent20">
+			<transforms>
+				<translate value3="-37.5 5 10" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent21">
+			<transforms>
+				<translate value3="-5 0.5 -23.75" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent22">
+			<transforms>
+				<translate value3="-5 1.5 -26.25" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent23">
+			<transforms>
+				<translate value3="-5 2.5 -28.75" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent24">
+			<transforms>
+				<translate value3="-5 3.5 -31.25" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent25">
+			<transforms>
+				<translate value3="-5 0.5 43.75" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent26">
+			<transforms>
+				<translate value3="-5 1.5 46.25" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent27">
+			<transforms>
+				<translate value3="-5 2.5 48.75" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent28">
+			<transforms>
+				<translate value3="-5 3.5 51.25" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="35 1 2.5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent29">
+			<transforms>
+				<translate value3="18.75 0.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent30">
+			<transforms>
+				<translate value3="21.25 1.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent31">
+			<transforms>
+				<translate value3="23.75 2.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent32">
+			<transforms>
+				<translate value3="26.25 3.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent33">
+			<transforms>
+				<translate value3="-28.75 0.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent34">
+			<transforms>
+				<translate value3="-31.25 1.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent35">
+			<transforms>
+				<translate value3="-33.75 2.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent36">
+			<transforms>
+				<translate value3="-36.25 3.5 10" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="2.5 1 55" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent37">
+			<transforms>
+				<translate value3="12.5 5 -28.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 8" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent38">
+			<transforms>
+				<translate value3="-22.5 5 48.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 8" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent39">
+			<transforms>
+				<translate value3="12.5 5 48.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 8" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent40">
+			<transforms>
+				<translate value3="-22.5 5 -28.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 10 8" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent41">
+			<transforms>
+				<translate value3="23.5 5 -17.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="8 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent42">
+			<transforms>
+				<translate value3="23.5 5 37.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="8 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent43">
+			<transforms>
+				<translate value3="-33.5 5 -17.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="8 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent44">
+			<transforms>
+				<translate value3="-33.5 5 37.5" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="8 10 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent45">
+			<transforms>
+				<translate value3="-33.5 -22.5 9.6" />
+                <rotate value3="90 0 90" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                    <cylinder base="42.5" top="42.5" height="8" slices="32" stacks="32" capsclose="true" thetastart="2.4" thetalength="1.5"/>
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent46">
+			<transforms>
+				<translate value3="23.5 -22.5 9.6" />
+                <rotate value3="90 0 90" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                    <cylinder base="42.5" top="42.5" height="8" slices="32" stacks="32" capsclose="true" thetastart="2.4" thetalength="1.5"/>
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent47">
+			<transforms>
+				<translate value3="-5 -9.5 48.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <cylinder base="26" top="26" height="8" slices="32" stacks="32" capsclose="true" thetastart="2.4" thetalength="1.5"/>
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent48">
+			<transforms>
+				<translate value3="-5 -9.5 -28.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+
+            <materialref id="wallApp2" />
+			
+            <children>             
+                <primitive>
+                     <cylinder base="26" top="26" height="8" slices="32" stacks="32" capsclose="true" thetastart="2.4" thetalength="1.5"/>
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent49">
+			<transforms>
+				<translate value3="-30 5 -22.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 10 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent50">
+			<transforms>
+				<translate value3="20 5 -22.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 10 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent51">
+			<transforms>
+				<translate value3="-30 5 42.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 10 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="wallComponent52">
+			<transforms>
+				<translate value3="20 5 42.5" />
+                <rotate value3="90 0 0" />
+            </transforms> 
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="15 10 15" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="obstaclePark">
+			<transforms>
+				<translate value3="-10 -5 0" />
+            </transforms> 
+
+			
+            <children>             
+                <noderef id="obstacleParkComponent1"/>       
+                <noderef id="obstacleParkComponent2"/>  
+                <noderef id="obstacleParkComponent3"/>  
+                <noderef id="obstacleParkComponent4"/>  
+                <noderef id="obstacleParkComponent5"/>
+            </children> 
+        </node>
+
+        <node id="obstacleParkComponent1">
+			<transforms>
+				<translate value3="0 0 0" />
+            </transforms> 
+
+			<materialref id="floorApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="3 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="obstacleParkComponent2">
+			<transforms>
+				<translate value3="-1.5 1.25 0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="obstacleParkComponent3">
+			<transforms>
+				<translate value3="1.5 1.25 0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="obstacleParkComponent4">
+			<transforms>
+				<translate value3="0 1.25 -2.5" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="3 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="obstacleParkComponent5">
+			<transforms>
+				<translate value3="0 2.5 0" />
+            </transforms> 
+
+			<materialref id="floorApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="3 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehiclePark">
+			<transforms>
+				<translate value3="0 -5 0" />
+            </transforms> 
+
+			
+            <children>             
+                <noderef id="vehicleParkComponent1"/>       
+                <noderef id="vehicleParkComponent2"/>  
+                <noderef id="vehicleParkComponent3"/>  
+                <noderef id="vehicleParkComponent4"/>  
+                <noderef id="vehicleParkComponent5"/>
+                <noderef id="vehicleParkComponent6"/>
+                <noderef id="vehicleParkComponent7"/>
+                <noderef id="vehicleParkComponent8"/>
+                <noderef id="vehicleParkComponent9"/>
+                <noderef id="vehicleParkComponent10"/>
+                <noderef id="vehicleParkComponent11"/>
+                <noderef id="vehicleParkComponent12"/>
+                <noderef id="vehicleParkComponent13"/>
+                <noderef id="vehicleParkComponent14"/>
+                <noderef id="vehicleParkComponent15"/>
+                <noderef id="vehicleParkComponent16"/>
+                <noderef id="vehicleParkComponent17"/>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent1">
+			<transforms>
+				<translate value3="0 0 0" />
+            </transforms> 
+
+			<materialref id="floorApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent2">
+			<transforms>
+				<translate value3="-2.5 1.25 0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent3">
+			<transforms>
+				<translate value3="2.5 1.25 0" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 2.5 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent4">
+			<transforms>
+				<translate value3="0 1.25 -2.5" />
+            </transforms> 
+
+			<materialref id="wallApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 2.5 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent5">
+			<transforms>
+				<translate value3="0 2.5 0" />
+            </transforms> 
+
+			<materialref id="floorApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="5 0.05 5" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent6">
+			<transforms>
+				<translate value3="-2.15 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent7">
+			<transforms>
+				<translate value3="-1.4 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent8">
+			<transforms>
+				<translate value3="-1 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent9">
+			<transforms>
+				<translate value3="-0.25 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent10">
+			<transforms>
+				<translate value3="0.25 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent11">
+			<transforms>
+				<translate value3="1 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent12">
+			<transforms>
+				<translate value3="1.4 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent13">
+			<transforms>
+				<translate value3="2.15 0.05 -1" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.05 0.01 1" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent14">
+			<transforms>
+				<translate value3="1.775 0.05 -1.5" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.8 0.01 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent15">
+			<transforms>
+				<translate value3="0.625 0.05 -1.5" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.8 0.01 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent16">
+			<transforms>
+				<translate value3="-0.625 0.05 -1.5" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.8 0.01 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="vehicleParkComponent17">
+			<transforms>
+				<translate value3="-1.775 0.05 -1.5" />
+            </transforms> 
+
+			<materialref id="whiteApp" />
+			
+            <children>             
+                <primitive>
+                     <box xyz1="0 0 0" xyz2="0.8 0.01 0.05" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="outdoor" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="10 0 -2.5" />
+            </transforms>
+
+            <children>             
+                <noderef id="outdoorPole1"/>       
+                <noderef id="outdoorPole2"/>  
+                <noderef id="outdoorScreen"/>
+            </children> 
+        </node>
+
+        <node id="outdoorPole1">
+            <transforms>
+                <translate value3="0 5 0" />
+            </transforms>
+
+            <materialref id="poleApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.2" top="0.2" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="outdoorPole2" castshadows="true" receiveshadows="true">
+            <transforms>
+                <translate value3="0 5 10" />
+            </transforms>
+
+            <materialref id="poleApp" />
+
+            <children>
+                <primitive>
+                    <cylinder base="0.2" top="0.2" height="10" slices="32" stacks="32" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="outdoorScreen">
+            <transforms>
+                <rotate value3="0.0 90.0 0.0" />
+                <translate value3="-5 6.5 0" />
+            </transforms>
+
+            <materialref id="screenApp" />
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="10 6 0.1" />
+                </primitive>
+            </children>
+        </node>
+
+    </graph> 
+</yaf> 
